@@ -1,0 +1,149 @@
+{
+  "product_goal": "Create a compact monitor-top desk companion that gives presence and posture cues without reading like a toy or an intrusive camera product.",
+  "execution_mode": "spec-only",
+  "hard_constraints": [
+    {
+      "id": "hc-01",
+      "category": "envelope",
+      "rule": "Keep the main body within 140 x 38 x 20 mm.",
+      "priority": "must"
+    },
+    {
+      "id": "hc-02",
+      "category": "mounting",
+      "rule": "Use a monitor-top contact and rear support strategy instead of a spring clamp.",
+      "priority": "must"
+    },
+    {
+      "id": "hc-03",
+      "category": "service",
+      "rule": "Preserve access to ports and the local control zone without full disassembly.",
+      "priority": "must"
+    }
+  ],
+  "component_envelopes": [
+    {
+      "name": "status display",
+      "size_mm": [
+        30,
+        18,
+        4
+      ],
+      "placement_note": "Front-left read zone"
+    },
+    {
+      "name": "vision sensor",
+      "size_mm": [
+        16,
+        16,
+        10
+      ],
+      "placement_note": "Front-center alignment zone"
+    },
+    {
+      "name": "logic board",
+      "size_mm": [
+        60,
+        28,
+        8
+      ],
+      "placement_note": "Right-half internal body volume"
+    },
+    {
+      "name": "buzzer",
+      "size_mm": [
+        12,
+        12,
+        6
+      ],
+      "placement_note": "Lower or rear-support-adjacent volume"
+    }
+  ],
+  "layout_zones": [
+    {
+      "name": "display window",
+      "surface": "front-left",
+      "purpose": "quick status read",
+      "priority": "must"
+    },
+    {
+      "name": "sensor island",
+      "surface": "front-center",
+      "purpose": "primary sensing focal area",
+      "priority": "must"
+    },
+    {
+      "name": "service zone",
+      "surface": "front-right and right-side edge",
+      "purpose": "button and service access",
+      "priority": "must"
+    }
+  ],
+  "mounting_strategy": {
+    "type": "monitor-top support",
+    "contact_points": "small front contact point and rear support arm",
+    "support_logic": "Use stable contact geometry and center-of-mass placement rather than a spring clamp.",
+    "service_access_notes": "Keep the right-side service area reachable in-place.",
+    "suggested_part_split": [
+      "front body shell",
+      "rear support arm",
+      "front or rear soft-contact pads",
+      "service-side insert or detail panel"
+    ]
+  },
+  "style_features": [
+    {
+      "name": "quiet bar silhouette",
+      "rule": "Preserve a long horizontal body with restrained height."
+    },
+    {
+      "name": "ordered front hierarchy",
+      "rule": "Keep left display, central sensor, and right service area visually legible."
+    },
+    {
+      "name": "controlled facets",
+      "rule": "Use subtle chamfers or facets instead of heavy curves."
+    }
+  ],
+  "manufacturing_risks": [
+    "The right-side service zone may become too crowded for ports and button access.",
+    "The rear support arm may read thinner than the required structure.",
+    "Camera depth and alignment may conflict with a shallow main body."
+  ],
+  "forbidden_features": [
+    "Decorative fake vents",
+    "Toy-like face cues",
+    "A hidden service port that requires full shell removal",
+    "Front-face asymmetry that breaks left-to-right clarity"
+  ],
+  "acceptance_checks": [
+    {
+      "id": "ac-01",
+      "title": "Main body envelope",
+      "method": "Measure the draft body bounding box.",
+      "pass_condition": "At or below 140 x 38 x 20 mm.",
+      "priority": "must"
+    },
+    {
+      "id": "ac-02",
+      "title": "Mounting credibility",
+      "method": "Review the side profile and support geometry.",
+      "pass_condition": "The device reads as physically stable on a monitor top edge.",
+      "priority": "must"
+    },
+    {
+      "id": "ac-03",
+      "title": "Front-face order",
+      "method": "Review the front elevation.",
+      "pass_condition": "Display, sensor, and service areas remain clearly ordered.",
+      "priority": "should"
+    },
+    {
+      "id": "ac-04",
+      "title": "Service access",
+      "method": "Review port and button placement.",
+      "pass_condition": "Basic service interactions remain reachable without major disassembly.",
+      "priority": "must"
+    }
+  ]
+}

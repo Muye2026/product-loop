@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Loop"
+  short_description: "Research-backed concept-to-CAD workflow for hardware teams"
+  default_prompt: "Use $product-loop to research comparable products, shortlist plausible modules, and turn this hardware idea into concept directions, design specs, and a CAD-ready design pack."

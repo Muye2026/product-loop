@@ -1,0 +1,283 @@
+{
+  "product_goal": "Create a low-profile temporary parking number plate for car dashboards that can show a phone number clearly and hide it quickly for privacy without relying on electronics.",
+  "execution_mode": "spec-only",
+  "hard_constraints": [
+    {
+      "id": "hc-01",
+      "category": "envelope",
+      "rule": "Keep the main body close to 125 x 42 x 14 mm.",
+      "priority": "must"
+    },
+    {
+      "id": "hc-02",
+      "category": "privacy",
+      "rule": "Provide a one-handed hide/reveal mechanism for the phone number.",
+      "priority": "must"
+    },
+    {
+      "id": "hc-03",
+      "category": "environment",
+      "rule": "Avoid electronics in the baseline and account for sunlight and cabin heat.",
+      "priority": "must"
+    }
+  ],
+  "component_envelopes": [
+    {
+      "name": "segmented printed digit cards",
+      "size_mm": [
+        92,
+        18,
+        2
+      ],
+      "placement_note": "Front number display tray"
+    },
+    {
+      "name": "sliding privacy cover",
+      "size_mm": [
+        105,
+        22,
+        3
+      ],
+      "placement_note": "Front or top guide track"
+    },
+    {
+      "name": "silicone anti-slip pad and ballast zone",
+      "size_mm": [
+        120,
+        36,
+        5
+      ],
+      "placement_note": "Lower base contact layer"
+    }
+  ],
+  "reference_cases": [
+    {
+      "case": "passive sliding parking number plate",
+      "lesson": "A passive slider can hide digits without requiring electronics.",
+      "design_implication": "Reserve a shallow front track and finger tab clearance.",
+      "source_note": "Common marketplace category; verify current suppliers in a live run."
+    },
+    {
+      "case": "flip-cover parking number plate",
+      "lesson": "A hinge makes privacy action obvious but increases side thickness.",
+      "design_implication": "Use only if the product can tolerate a thicker side profile.",
+      "source_note": "Comparable commercial mechanism pattern."
+    },
+    {
+      "case": "LED or backlit parking display",
+      "lesson": "Night readability improves but battery, service, and heat risks increase.",
+      "design_implication": "Reserve electronics only if illumination is a hard requirement.",
+      "source_note": "Active-display product category; current parts not verified in this static example."
+    }
+  ],
+  "component_requirements": [
+    {
+      "module": "number display",
+      "requirement": "Show 11-12 digits through windshield glare.",
+      "envelope_target_mm": [
+        92,
+        18,
+        2
+      ],
+      "design_implication": "Front face needs a precise number window."
+    },
+    {
+      "module": "privacy mechanism",
+      "requirement": "Hide or reveal digits in one motion.",
+      "envelope_target_mm": [
+        105,
+        22,
+        3
+      ],
+      "design_implication": "Body must preserve a slider track or hinge zone."
+    },
+    {
+      "module": "mounting base",
+      "requirement": "Stay stable on dashboard without visible permanent adhesive.",
+      "envelope_target_mm": [
+        120,
+        36,
+        5
+      ],
+      "design_implication": "Bottom footprint cannot be visually minimized too aggressively."
+    }
+  ],
+  "component_candidates": [
+    {
+      "module": "display",
+      "candidate": "segmented printed digit cards",
+      "approx_envelope_mm": [
+        92,
+        18,
+        2
+      ],
+      "interface_or_mounting": "Mechanical tray behind a front window",
+      "visible_design_impact": "Thin passive body with precise digit window",
+      "risk": "Supplier thickness and print durability vary"
+    },
+    {
+      "module": "privacy",
+      "candidate": "sliding cover",
+      "approx_envelope_mm": [
+        105,
+        22,
+        3
+      ],
+      "interface_or_mounting": "Top or front track with stop features",
+      "visible_design_impact": "Clean horizontal gesture and low side profile",
+      "risk": "Track friction, dust, and rattle"
+    },
+    {
+      "module": "base",
+      "candidate": "silicone anti-slip pad plus weighted plate",
+      "approx_envelope_mm": [
+        120,
+        36,
+        5
+      ],
+      "interface_or_mounting": "Captured bottom pad and internal ballast",
+      "visible_design_impact": "Stable broad stance and soft underside detail",
+      "risk": "Heat aging and durometer are unverified"
+    }
+  ],
+  "selected_components": [
+    {
+      "module": "display",
+      "selection": "segmented printed digit cards",
+      "why": "Lowest thickness and no electronics.",
+      "fixed_constraints": "Requires a 92 x 18 mm number window and tray retention.",
+      "unverified": "Exact card supplier thickness and print durability.",
+      "fallback_envelope_mm": [
+        98,
+        22,
+        4
+      ]
+    },
+    {
+      "module": "privacy",
+      "selection": "sliding cover",
+      "why": "Thin one-handed privacy action with clear horizontal product language.",
+      "fixed_constraints": "Requires shallow track, stop features, tab clearance, and anti-rattle detail.",
+      "unverified": "Friction and rattle after heat exposure.",
+      "fallback_envelope_mm": [
+        110,
+        24,
+        5
+      ]
+    },
+    {
+      "module": "base",
+      "selection": "silicone anti-slip pad plus internal weighted plate",
+      "why": "Dashboard-safe and passive without exposed permanent adhesive.",
+      "fixed_constraints": "Requires broad bottom contact and captured pad edge.",
+      "unverified": "Pad durometer and heat aging.",
+      "fallback_envelope_mm": [
+        125,
+        40,
+        7
+      ]
+    }
+  ],
+  "packaging_constraints": [
+    "Target total body thickness should remain near 12-14 mm after card, slider, shell, and base stack-up.",
+    "Preserve a front number window around 92 x 18 mm with small reveal margin.",
+    "Slider track needs end stops, finger tab clearance, and anti-rattle features.",
+    "Bottom contact footprint must remain broad enough for dashboard stability.",
+    "Avoid active electronics unless illumination becomes a hard requirement."
+  ],
+  "sourcing_risks": [
+    "Digit card dimensions vary by supplier.",
+    "Silicone pad performance under parked-car heat is unverified.",
+    "Current availability, price, and exact supplier dimensions were not verified in this static example."
+  ],
+  "layout_zones": [
+    {
+      "name": "number window",
+      "surface": "front-center",
+      "purpose": "readable phone-number display",
+      "priority": "must"
+    },
+    {
+      "name": "slider track",
+      "surface": "front and top edge",
+      "purpose": "privacy hide/reveal motion",
+      "priority": "must"
+    },
+    {
+      "name": "base contact",
+      "surface": "bottom",
+      "purpose": "dashboard stability",
+      "priority": "must"
+    }
+  ],
+  "mounting_strategy": {
+    "type": "dashboard passive base",
+    "contact_points": "broad silicone anti-slip pad with internal weighted plate",
+    "support_logic": "Use bottom footprint and low center of mass instead of permanent adhesive.",
+    "service_access_notes": "Digit cards should be replaceable without opening the whole shell.",
+    "suggested_part_split": [
+      "upper shell with number window",
+      "sliding privacy cover",
+      "digit card tray",
+      "lower base shell",
+      "captured silicone pad",
+      "internal ballast plate"
+    ]
+  },
+  "style_features": [
+    {
+      "name": "low horizontal rail",
+      "rule": "Preserve a calm linear silhouette that reflects the slider mechanism."
+    },
+    {
+      "name": "precise number window",
+      "rule": "Keep digits centered and readable, not decorative."
+    },
+    {
+      "name": "soft stable base",
+      "rule": "Let the underside read stable without becoming bulky."
+    }
+  ],
+  "manufacturing_risks": [
+    "Slider tolerance can create rattle or binding.",
+    "Thin cover may warp under cabin heat.",
+    "Silicone pad creep can reduce stability.",
+    "Exact supplier dimensions are not locked."
+  ],
+  "forbidden_features": [
+    "Fake vents or decorative tech details",
+    "Tiny digit window that reduces readability",
+    "Unverified battery or LED stack in the baseline",
+    "Narrow base that compromises dashboard stability"
+  ],
+  "acceptance_checks": [
+    {
+      "id": "ac-01",
+      "title": "Readable number window",
+      "method": "Review front elevation and measure window.",
+      "pass_condition": "Digit area is near 92 x 18 mm and remains visually centered.",
+      "priority": "must"
+    },
+    {
+      "id": "ac-02",
+      "title": "Privacy slider package",
+      "method": "Review section stack and motion path.",
+      "pass_condition": "Slider clears number window and has stop/tab space within target body thickness.",
+      "priority": "must"
+    },
+    {
+      "id": "ac-03",
+      "title": "Dashboard stability",
+      "method": "Review bottom footprint and ballast zone.",
+      "pass_condition": "Base contact remains broad and low enough for stable placement.",
+      "priority": "must"
+    },
+    {
+      "id": "ac-04",
+      "title": "Component assumptions",
+      "method": "Check selected component envelopes before CAD.",
+      "pass_condition": "Digit card, slider, and pad dimensions are verified or fallback envelopes are used.",
+      "priority": "should"
+    }
+  ]
+}
